@@ -40,7 +40,6 @@
         }
     </style>
 </head>
-<body>
 
 <body>
     <div class="container">
@@ -63,20 +62,20 @@
                                 <label for="iposId">IPOS ID</label>
                             </div>
                             <div class="form-label-group">
-                                <input type="text" id="fullName" class="form-control" placeholder="Fullname" required autofocus>
-                                <label for="fullName">Fullname</label>
+                                <input type="text" id="fullName" class="form-control" placeholder="Fullname*" required autofocus>
+                                <label for="fullName">Fullname<font style="color: red;">*</font></label>
                             </div>
                             <div class="form-label-group">
-                                <input type="text" id="phone" class="form-control" placeholder="Phone" onkeypress="numberOnly(event)" required autofocus>
-                                <label for="phone">Phone</label>
+                                <input type="text" id="phone" class="form-control" placeholder="Phone*" onkeypress="numberOnly(event)" required autofocus>
+                                <label for="phone">Phone<font style="color: red;">*</font></label>
                             </div>
                             <div class="form-label-group">
                                 <input type="text" id="email" class="form-control" placeholder="Email Address" value="<?php echo $user['email'] ?>" disabled required>
                                 <label for="email">Email Address</label>
                             </div>
                             <div class="form-label-group">
-                                <input type="date" id="birthday" class="form-control" placeholder="Birthday" required autofocus>
-                                <label for="birthday">Birthday</label>
+                                <input type="date" id="birthday" class="form-control" placeholder="Birthday*" required autofocus>
+                                <label for="birthday">Birthday<font style="color: red;">*</font></label>
                             </div>
                             <div class="form-label-group">
                                 <input type="email" id="iposName" class="form-control" placeholder="IPOS Name" value="<?php echo $user['nama_ipos'] ?>" disabled required>
@@ -88,15 +87,18 @@
                             </div>
                             <hr>
                             <div class="form-label-group">
-                                <input type="password" id="password" class="form-control" placeholder="Password" required>
-                                <label for="password">Password</label>
+                                <input type="password" id="password" class="form-control" placeholder="Password*" required>
+                                <label for="password">Password<font style="color: red;">*</font></label>
                             </div>
                             <p id='message' style="margin-bottom: 5px; margin-left: 10px;"></p>
                             <div class="form-label-group">
                                 
-                                <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" onkeyup="check();" required>
-                                <label for="confirmPassword">Confirm Password</label>
+                                <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password*" onkeyup="check();" required>
+                                <label for="confirmPassword">Confirm Password<font style="color: red;">*</font></label>
                             </div>
+                            
+                            <p id="errorMessage" style="color: red;"></p>
+                            
 
                             <!-- <button class="btn btn-lg btn-primary btn-block text-uppercase" onclick="submitForm()">Submit</button> -->
                             <a id="btnSubmit" class="btn btn-lg btn-primary btn-block text-uppercase disabled text-white" onclick="submitForm()"><i class="fa fa-spinner fa-spin" id="spinner_id" style="display: none;"></i><i class="fa fa-check" id="check_id" style="display: none;"></i> Submit</a>
@@ -172,6 +174,8 @@
                         setTimeout(() => {
                             $("#spinner_id").css("display", "none");
                             $("#check_id").css("display", "");
+                            $("#check_id").removeClass("fa-times");
+                            $("#check_id").addClass("fa-check");
                             setTimeout(() => {
                                 $("#check_id").hide('slow');
                             }, 2000);
@@ -183,6 +187,10 @@
                         setTimeout(() => {
                             $("#spinner_id").css("display", "none");
                             $("#check_id").css("display", "");
+                            $("#errorMessage").slideDown('slow');
+                            $("#check_id").addClass("fa-times");
+                            $("#check_id").removeClass("fa-check");
+                            document.getElementById('errorMessage').innerHTML = obj.errorMessage;
                             setTimeout(() => {
                                 $("#check_id").hide('slow');
                             }, 2000);
@@ -197,6 +205,4 @@
     </script>
 </body>
 <!-- partial -->
-  
-</body>
 </html>
