@@ -19,8 +19,8 @@ class Home extends BaseController{
     
                     $data = array(  'title' => 'Point IS - Registration Form',
                                     'user' => $user);
-                    echo "<script>console.log('Invitation Number :".$custCode."')</script>";
-                    echo "<script>console.log('Activated :".$activated."')</script>";
+                    // echo "<script>console.log('Invitation Number :".$custCode."')</script>";
+                    // echo "<script>console.log('Activated :".$activated."')</script>";
                     return view('home/home', $data);
                 } else {
                     $data = array(  'title' => 'Point IS - Account Activated',

@@ -38,6 +38,16 @@
                 min-height: calc(100% - 60px);
             }
         }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+        -moz-appearance: textfield;
+        }        
     </style>
 </head>
 
@@ -66,7 +76,7 @@
                                 <label for="fullName">Fullname<font style="color: red;">*</font></label>
                             </div>
                             <div class="form-label-group">
-                                <input type="text" id="phone" class="form-control" placeholder="Phone*" onkeypress="numberOnly(event)" required autofocus>
+                                <input type="number" id="phone" class="form-control" placeholder="Phone*" required autofocus>
                                 <label for="phone">Phone<font style="color: red;">*</font></label>
                             </div>
                             <div class="form-label-group">
@@ -202,6 +212,15 @@
                 }
             });  
         }        
+        $(function() {
+            $('#fullName').keyup(function() {
+                this.value = this.value.toLocaleUpperCase();
+                this.value = this.value.replace(/[^A-Za-z_\s]/,'');
+            });
+            $('#phone').keyup(function() {
+                this.value = this.value.replace(/[^0-9]/g, '');
+            });
+        });        
     </script>
 </body>
 <!-- partial -->
